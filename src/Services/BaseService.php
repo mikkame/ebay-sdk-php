@@ -60,6 +60,12 @@ abstract class BaseService
     }
 
     /**
+     * @var for debug
+     */
+    
+    public $latestRawResponse;
+
+    /**
      * Returns definitions for each configuration option that is supported.
      *
      * @return array An associative array of configuration definitions.
@@ -173,7 +179,7 @@ abstract class BaseService
                 }
 
                 $xmlParser = new XmlParser($responseClass);
-
+                $this->latestRawResponse= $xmlResponse;
                 $response = $xmlParser->parse($xmlResponse);
                 $response->attachment($attachment);
 
